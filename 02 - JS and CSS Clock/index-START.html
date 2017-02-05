@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>JS + CSS Clock</title>
+  <script type="text/javascript" src="timer.js">
+
+  </script>
 </head>
 <body>
 
@@ -61,13 +64,14 @@
       background:black;
       position: absolute;
       top:50%;
+      transform-origin: 100%;
+      transform: rotate(90deg);
+      transition: all 0.1s;
+      transition-timing-function: cubic-bezier(0, 1.93, 0, 0.57);
     }
 
   </style>
 
-  <script>
 
-
-  </script>
 </body>
 </html>
