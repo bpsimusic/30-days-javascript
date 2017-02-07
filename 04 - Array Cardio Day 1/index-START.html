@@ -31,29 +31,61 @@
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
-
+      const oldInventors = inventors.filter(el => el.year >= 1500 && el.year < 1600);
+      // console.table(oldInventors)
     // Array.prototype.map()
     // 2. Give us an array of the inventors' first and last names
+      const directory = inventors.map(el => el.first + ' ' + el.last);
+      // console.log(directory)
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
-
+      const oldestSort = inventors.sort((a,b)=> a.year < b.year ? -1 : 1)
+      // console.table(oldestSort)
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live?
 
+      const totalYears = inventors.reduce((total, inventor) => {
+        return total + (inventor.passed - inventor.year);
+      }, 0);
+      // console.log(totalYears)
     // 5. Sort the inventors by years lived
+      const oldestAge = inventors.sort((a,b)=> (a.passed-a.year) > (b.passed-b.year) ? -1 : 1);
+
+      // console.table(oldestAge);
+
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+      const category = document.querySelector('.mw-category');
+      const links = Array.from(category.querySelectorAll('a'));
+      const de = links
+                  .map(link => link.textContent)
+                  .filter(streetName => streetName.includes('de'));
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
 
+      const alphabet = people.sort((a,b) => {
+        return a.split(',')[0] > b.split(',')[0] ? 1 : -1;
+      });
+
+      // console.log(alphabet);
+
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const num = data.reduce((obj, el)=>{
+      if (!obj[el]){
+        obj[el] = 1;
+      } else {
+        obj[el] += 1;
+      }
+      return obj;
+    }, {})
 
+    // console.log(num)
   </script>
 </body>
 </html>
