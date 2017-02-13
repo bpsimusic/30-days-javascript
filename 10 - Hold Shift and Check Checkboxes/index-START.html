@@ -104,6 +104,23 @@
   </div>
 
 <script>
+  const checkboxes = document.querySelectorAll(`.inbox input[type="checkbox"]`);
+  let inBetween = false;
+  function handleCheck(e){
+    if(e.shiftKey && this.checked){
+      checkboxes.forEach(checkbox => {
+        if (checkbox === this || checkbox === lastChecked){
+          inBetween = !inBetween
+        }
+        if (inBetween) checkbox.checked = true;
+      })
+
+    }
+
+    //this will hold a reference to the 'first' checked thing.
+    lastChecked = this;
+  }
+  checkboxes.forEach(e => e.addEventListener("click", handleCheck))
 </script>
 </body>
 </html>
