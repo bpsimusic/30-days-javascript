@@ -31,6 +31,38 @@
   </style>
 
 <script>
+  const hero = document.querySelector(".hero")
+  const text = hero.querySelector('h1')
+  const walk = 100;
+  function shadow(e){
+    //hero has offsetWidth and offsetHeight properties. You're
+    //creating new variables width and height that will have the values
+    //of offsetWidth and offsetHeight.
+    let {offsetWidth: width, offsetHeight: height} = hero;
+    let {offsetX: x, offsetY: y} = e
+
+    //the e event has offsetX and offsetY, which tell you where your cursor is.
+
+
+    //the offsetX and offsetY will reset if the hero element has children
+    // console.log(x, y)
+    if(this !== e.target){
+      x += e.target.offSetX
+      y += e.target.offSetY
+    }
+
+    //brings it from -50 to 50
+    const xWalk = Math.round((x/width * walk) - (walk / 2));
+    const yWalk = Math.round((y/width * walk) - (walk / 2));
+    text.style.textShadow = `
+      ${xWalk}px ${yWalk}px 0 rgba(255,0,255,0.7),
+      ${xWalk * -1}px ${yWalk}px 0 rgba(0,255,255,0.7),
+      ${yWalk}px ${xWalk * -1}px 0 rgba(0,255,0,0.7),
+      ${yWalk * -1}px ${xWalk}px 0 rgba(0,0,255,0.7)
+    `;
+  }
+  hero.addEventListener("mousemove", shadow)
+
 </script>
 </body>
 </html>
