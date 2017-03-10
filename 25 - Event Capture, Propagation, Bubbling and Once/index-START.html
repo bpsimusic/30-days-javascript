@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -39,6 +39,30 @@
 
 <button></button>
 <script>
+/*Bubbling up means that when you click on "three", "two" and "one" get clicked as well,
+as well as the body, html, tab, browser, your mac, etc. Bubbling up is inside out. */
+
+/*Event Capture means that before an event is fired, it is captured. When you "click"
+on "three", the body tag captures the click, "one" captures the click, and so on.
+These captures are stored so they can be fired later. Then the bubbling up happens.
+
+You can add an options hash {capture: true} to addEventListener, which will fire the event
+as soon as it's captured. Capture is outside in*/
+
+/*Propagation: you can stop the events from propagating with e.stopPropagation(); this
+can be attached to any event. */
+
+/*Once is only one time for addEventListener. As soon as the event is fired, the
+element unbinds the EventListener. You add the hash {once: true}.*/
+
+const divs = document.querySelectorAll("div")
+
+function logEvent(e){
+  console.log(this.classList.value)
+  e.stopPropagation();
+}
+
+divs.forEach(e => e.addEventListener("click", logEvent, {capture: true, once: false}))
 
 </script>
 </body>
