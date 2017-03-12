@@ -223,10 +223,11 @@
     const dropdownCoords = dropdown.getBoundingClientRect();
     navCoords = nav.getBoundingClientRect();
 
+    console.log(dropdownCoords)
     const coords = {
       height: dropdownCoords.height,
       width: dropdownCoords.width,
-      top: dropdownCoords.top - navCoords.top,
+      top: dropdownCoords.top - navCoords.top, //review if you have time
       left: dropdownCoords.left - navCoords.left
     }
 
